@@ -84,11 +84,11 @@
 
 ### Functional Requirements
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]  
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
+- **FR-001**: System MUST follow AI/Spec-driven development workflow using Spec-Kit Plus and Claude Code
+- **FR-002**: System MUST maintain academic rigor and technical accuracy for Physical AI & Humanoid Robotics content
+- **FR-003**: Users MUST be able to access content that is clear and accessible to university-level engineering students
+- **FR-004**: System MUST implement modular and reusable architecture for AI-agent-related logic
+- **FR-005**: System MUST support end-to-end integration testing for RAG chatbot, Docusaurus deployment, and personalization systems
 
 *Example of marking unclear requirements:*
 

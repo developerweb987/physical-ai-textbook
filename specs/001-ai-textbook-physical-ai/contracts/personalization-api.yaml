@@ -1,0 +1,495 @@
+openapi: 3.0.0
+info:
+  title: Personalization API for AI-Native Textbook
+  description: API for the personalization features in the AI-Native Textbook for Physical AI & Humanoid Robotics
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+  - url: https://api.textbook.example.com
+    description: Production server
+
+paths:
+  /api/v1/personalization/profile:
+    get:
+      summary: Get the user's personalization profile
+      description: Retrieve the current user's profile information for personalization
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentProfile'
+        '401':
+          description: Unauthorized - user not authenticated
+        '404':
+          description: Profile not found for user
+    post:
+      summary: Create or update the user's personalization profile
+      description: Create a new profile or update existing profile information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentProfileUpdateRequest'
+      responses:
+        '200':
+          description: Profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentProfile'
+        '401':
+          description: Unauthorized - user not authenticated
+        '422':
+          description: Validation error in profile data
+
+  /api/v1/personalization/recommendations:
+    get:
+      summary: Get personalized chapter recommendations
+      description: Retrieve recommended chapters based on user profile
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+          description: Number of recommendations to return
+      responses:
+        '200':
+          description: Recommendations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChapterRecommendation'
+        '401':
+          description: Unauthorized - user not authenticated
+
+  /api/v1/personalization/recommendations/{chapter_id}:
+    post:
+      summary: Mark recommendation as accepted or rejected
+      description: Track whether user accepted a recommendation
+      parameters:
+        - name: chapter_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: ID of the chapter recommendation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                was_accepted:
+                  type: boolean
+                  description: Whether the user accepted the recommendation
+              required:
+                - was_accepted
+      responses:
+        '200':
+          description: Recommendation status updated successfully
+        '401':
+          description: Unauthorized - user not authenticated
+        '404':
+          description: Recommendation not found
+
+  /api/v1/personalization/content/{chapter_id}:
+    get:
+      summary: Get personalized content adaptations
+      description: Retrieve adapted content for a specific chapter based on user profile
+      parameters:
+        - name: chapter_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: ID of the chapter
+      responses:
+        '200':
+          description: Personalized content adaptations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContentAdaptation'
+        '401':
+          description: Unauthorized - user not authenticated
+        '404':
+          description: Chapter or adaptations not found
+
+  /api/v1/personalization/translation:
+    post:
+      summary: Request content translation
+      description: Translate content to the user's preferred language
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The content to translate
+                target_language:
+                  type: string
+                  default: 'ur'
+                  description: Target language code (e.g., ur for Urdu)
+                content_type:
+                  type: string
+                  enum: [text, chapter, section, exercise]
+                  description: Type of content being translated
+              required:
+                - content
+                - target_language
+      responses:
+        '200':
+          description: Content translated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  translated_content:
+                    type: string
+                    description: The translated content
+                  source_language:
+                    type: string
+                    description: Detected source language
+                  target_language:
+                    type: string
+                    description: Target language
+                  confidence:
+                    type: number
+                    description: Confidence score of translation
+        '401':
+          description: Unauthorized - user not authenticated
+        '422':
+          description: Validation error in translation request
+
+  /api/v1/personalization/preferences:
+    get:
+      summary: Get user's personalization preferences
+      description: Retrieve current personalization settings and preferences
+      responses:
+        '200':
+          description: Preferences retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalizationPreferences'
+        '401':
+          description: Unauthorized - user not authenticated
+    put:
+      summary: Update user's personalization preferences
+      description: Update personalization settings and preferences
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalizationPreferencesUpdateRequest'
+      responses:
+        '200':
+          description: Preferences updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalizationPreferences'
+        '401':
+          description: Unauthorized - user not authenticated
+        '422':
+          description: Validation error in preferences data
+
+components:
+  schemas:
+    StudentProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the student profile
+        user_id:
+          type: string
+          format: uuid
+          description: Reference to the authenticated user
+        technical_background:
+          type: string
+          enum: [beginner, intermediate, advanced, expert]
+          description: Student's technical experience level
+        field_of_study:
+          type: string
+          enum: [engineering, computer_science, robotics, other]
+          description: Primary field of study
+        learning_goals:
+          type: array
+          items:
+            type: string
+          description: Student's learning objectives
+        current_knowledge_level:
+          type: string
+          enum: [novice, familiar, proficient, expert]
+          description: Current understanding of Physical AI concepts
+        learning_preferences:
+          type: array
+          items:
+            type: string
+          description: Preferred learning styles
+        language_preferences:
+          type: array
+          items:
+            type: string
+          description: Preferred languages
+        accessibility_needs:
+          type: array
+          items:
+            type: string
+          description: Any accessibility requirements
+        chapter_preferences:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Preferred chapter topics or interests
+        recommended_chapters:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Chapters recommended based on profile
+        learning_history:
+          type: object
+          description: Track progress and completed chapters
+        personalization_enabled:
+          type: boolean
+          description: Whether personalization is enabled for this user
+        created_at:
+          type: string
+          format: date-time
+          description: When the profile was created
+        updated_at:
+          type: string
+          format: date-time
+          description: When the profile was last updated
+        data_retention_until:
+          type: string
+          format: date-time
+          description: When data should be deleted per retention policy
+      required:
+        - id
+        - user_id
+        - technical_background
+        - field_of_study
+        - learning_goals
+        - current_knowledge_level
+        - learning_preferences
+        - language_preferences
+        - created_at
+        - updated_at
+        - data_retention_until
+
+    StudentProfileUpdateRequest:
+      type: object
+      properties:
+        technical_background:
+          type: string
+          enum: [beginner, intermediate, advanced, expert]
+        field_of_study:
+          type: string
+          enum: [engineering, computer_science, robotics, other]
+        learning_goals:
+          type: array
+          items:
+            type: string
+        current_knowledge_level:
+          type: string
+          enum: [novice, familiar, proficient, expert]
+        learning_preferences:
+          type: array
+          items:
+            type: string
+        language_preferences:
+          type: array
+          items:
+            type: string
+        accessibility_needs:
+          type: array
+          items:
+            type: string
+        chapter_preferences:
+          type: array
+          items:
+            type: string
+            format: uuid
+        personalization_enabled:
+          type: boolean
+
+    ChapterRecommendation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the recommendation
+        chapter_id:
+          type: string
+          format: uuid
+          description: Chapter being recommended
+        title:
+          type: string
+          description: Title of the recommended chapter
+        recommendation_score:
+          type: number
+          format: float
+          description: Score indicating relevance to user profile
+        reasons:
+          type: array
+          items:
+            type: string
+          description: Reasons for the recommendation
+        priority:
+          type: integer
+          description: Priority level of the recommendation (1=highest, 5=lowest)
+        is_active:
+          type: boolean
+          description: Whether the recommendation is currently active
+        created_at:
+          type: string
+          format: date-time
+          description: When the recommendation was created
+      required:
+        - id
+        - chapter_id
+        - title
+        - recommendation_score
+        - reasons
+        - priority
+        - is_active
+        - created_at
+
+    ContentAdaptation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the adaptation
+        chapter_id:
+          type: string
+          format: uuid
+          description: Chapter being adapted
+        content_element:
+          type: string
+          enum: [text, diagram, code, exercise, example]
+          description: Type of content being adapted
+        adaptation_type:
+          type: string
+          enum: [simplified, expanded, visual, hands_on, theoretical]
+          description: Type of adaptation
+        adapted_content:
+          type: string
+          description: The adapted content
+        original_content_ref:
+          type: string
+          description: Reference to original content for tracking
+        confidence_score:
+          type: number
+          format: float
+          description: Confidence in the adaptation quality
+        is_active:
+          type: boolean
+          description: Whether the adaptation is currently active
+        created_at:
+          type: string
+          format: date-time
+          description: When the adaptation was created
+      required:
+        - id
+        - chapter_id
+        - content_element
+        - adaptation_type
+        - adapted_content
+        - original_content_ref
+        - confidence_score
+        - is_active
+        - created_at
+
+    PersonalizationPreferences:
+      type: object
+      properties:
+        personalization_enabled:
+          type: boolean
+          description: Whether personalization features are enabled
+        show_recommendations:
+          type: boolean
+          description: Whether to show chapter recommendations
+        adaptive_content:
+          type: boolean
+          description: Whether to show adapted content
+        language_override:
+          type: string
+          description: Language preference override (if different from profile)
+        accessibility_features:
+          type: object
+          description: Enabled accessibility features
+          properties:
+            high_contrast:
+              type: boolean
+            larger_text:
+              type: boolean
+            audio_support:
+              type: boolean
+        notification_preferences:
+          type: object
+          description: Notification settings for personalization
+          properties:
+            new_recommendations:
+              type: boolean
+            progress_updates:
+              type: boolean
+      required:
+        - personalization_enabled
+        - show_recommendations
+        - adaptive_content
+
+    PersonalizationPreferencesUpdateRequest:
+      type: object
+      properties:
+        personalization_enabled:
+          type: boolean
+        show_recommendations:
+          type: boolean
+        adaptive_content:
+          type: boolean
+        language_override:
+          type: string
+        accessibility_features:
+          type: object
+          properties:
+            high_contrast:
+              type: boolean
+            larger_text:
+              type: boolean
+            audio_support:
+              type: boolean
+        notification_preferences:
+          type: object
+          properties:
+            new_recommendations:
+              type: boolean
+            progress_updates:
+              type: boolean

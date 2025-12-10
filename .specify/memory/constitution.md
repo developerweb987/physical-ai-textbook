@@ -1,55 +1,49 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: N/A → 1.0.0
+Added sections: All principles and sections for AI-Native Textbook project
+Removed sections: None (new constitution)
+Modified principles: N/A (new constitution)
+Templates requiring updates:
+- .specify/templates/plan-template.md: ✅ updated
+- .specify/templates/spec-template.md: ✅ updated
+- .specify/templates/tasks-template.md: ✅ updated
+- .specify/templates/commands/*.md: ✅ updated
+- README.md: ⚠ pending
+Follow-up TODOs: None
+-->
+
+# AI-Native Textbook for Teaching Physical AI & Humanoid Robotics Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### AI/Spec-driven Development
+All development follows AI/Spec-driven workflow using Spec-Kit Plus and Claude Code; Every feature must be planned through /sp.requirements → /sp.specify → /sp.plan → /sp.task workflow before implementation; All changes must be testable and follow systematic approach
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Academic Rigor and Technical Accuracy
+Content must maintain university-level engineering standards with technical accuracy in robotics, humanoid mechanics, sensors, locomotion, control systems, and Physical AI; No hallucinated simplifications that conflict with academic correctness; All technical claims must be verifiable
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Modular and Reusable Architecture
+All AI-agent-related logic must be separated into dedicated modules for maintainability; Subagents and Agent Skills must be reusable across multiple chapters; Systematic integration of AI Agents, RAG, and personalization within the textbook
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Accessibility and Clarity
+Content must be clear and accessible to university-level engineering students; All complex concepts should be explained with hands-on, practical examples; Modular content structure for flexible learning paths
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### End-to-End Integration Testing
+Focus areas requiring integration tests: RAG chatbot functionality (global and selected-text-only modes), Docusaurus deployment pipeline, Personalization systems, Dynamic translation features
 
-### [PRINCIPLE_6_NAME]
+### Versioning and Deployment Standards
+All features must be deployed on GitHub Pages via Docusaurus; Version control follows semantic versioning with clear release notes; Backwards compatibility maintained for core textbook functionality
 
+## Technical Standards
 
-[PRINCIPLE__DESCRIPTION]
+Technology stack: Docusaurus for textbook, RAG for chatbot, BetterAuth for authentication (optional), React for UI components; Code quality: All code must pass linting, testing, and security checks; Performance: Pages must load within 3 seconds, RAG responses within 5 seconds
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Development Workflow
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+All features must follow Spec-Kit Plus workflow: requirements → spec → plan → tasks; Code reviews required for all PRs; Tests must pass before merging; Documentation must be updated with each feature
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+All PRs/reviews must verify compliance with academic correctness and technical accuracy; Complexity must be justified with educational value; Use Spec-Kit Plus templates for all planning artifacts; Constitution supersedes all other practices; Amendments require documentation and team approval
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10

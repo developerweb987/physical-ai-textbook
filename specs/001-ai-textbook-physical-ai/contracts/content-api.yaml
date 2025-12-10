@@ -1,0 +1,202 @@
+openapi: 3.0.0
+info:
+  title: AI Textbook Content API
+  description: API for managing textbook content and student progress
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+    description: Production server
+  - url: http://localhost:8000
+    description: Development server
+
+paths:
+  /chapters:
+    get:
+      summary: Get list of textbook chapters
+      parameters:
+        - name: published
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+          description: Whether to include only published chapters
+      responses:
+        '200':
+          description: List of available chapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    title:
+                      type: string
+                    slug:
+                      type: string
+                    chapter_number:
+                      type: integer
+                    learning_outcomes:
+                      type: array
+                      items:
+                        type: string
+                    prerequisites:
+                      type: array
+                      items:
+                        type: string
+                        format: uuid
+                    status:
+                      type: string
+                      enum: [draft, review, published]
+
+  /chapters/{chapterId}:
+    get:
+      summary: Get specific chapter content
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The chapter identifier
+      responses:
+        '200':
+          description: Chapter content and metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  content:
+                    type: string
+                    description: Markdown content of the chapter
+                  learning_outcomes:
+                    type: array
+                    items:
+                      type: string
+                  diagrams:
+                    type: array
+                    items:
+                      type: string
+                  code_examples:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        language:
+                          type: string
+                        code:
+                          type: string
+                  exercises:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        question:
+                          type: string
+                        type:
+                          type: string
+                  chapter_number:
+                    type: integer
+                  status:
+                    type: string
+                    enum: [draft, review, published]
+
+  /progress/{studentId}/chapters:
+    get:
+      summary: Get student's chapter progress
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The student's identifier
+      responses:
+        '200':
+          description: Student's progress across all chapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    chapter_id:
+                      type: string
+                      format: uuid
+                    chapter_title:
+                      type: string
+                    completion_percentage:
+                      type: number
+                      minimum: 0
+                      maximum: 100
+                    time_spent_seconds:
+                      type: integer
+                    last_accessed:
+                      type: string
+                      format: date-time
+                    exercises_completed:
+                      type: array
+                      items:
+                        type: string
+
+  /progress/{studentId}/chapters/{chapterId}:
+    post:
+      summary: Update student's progress for a specific chapter
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                completion_percentage:
+                  type: number
+                  minimum: 0
+                  maximum: 100
+                time_spent_seconds:
+                  type: integer
+                exercises_completed:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Progress updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  updated_at:
+                      type: string
+                      format: date-time

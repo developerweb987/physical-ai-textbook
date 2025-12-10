@@ -31,7 +31,12 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- **AI/Spec-driven Development**: Verify the plan follows /sp.requirements → /sp.specify → /sp.plan → /sp.task workflow
+- **Academic Rigor and Technical Accuracy**: Ensure technical approach maintains university-level standards for Physical AI & Humanoid Robotics
+- **Modular and Reusable Architecture**: Confirm AI-agent-related logic is separated into dedicated modules
+- **Accessibility and Clarity**: Verify approach supports clear, accessible content for engineering students
+- **End-to-End Integration Testing**: Plan must include integration tests for RAG chatbot, Docusaurus deployment, and personalization systems
+- **Versioning and Deployment Standards**: Confirm deployment strategy aligns with GitHub Pages via Docusaurus requirements
 
 ## Project Structure
 

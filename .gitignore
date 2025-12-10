@@ -1,0 +1,83 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.ENV
+dist/
+build/
+*.egg-info/
+*.dist-info/
+target/
+*.class
+*.jar
+bin/
+obj/
+out/
+*.o
+*.so
+*.a
+*.exe
+*.dll
+.gradle/
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Docusaurus
+.docusaurus/
+.cache/
+.sass-cache/
+*.log
+.env*
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV
+.ENV
+.python-version
+.pytest_cache/
+.coverage
+htmlcov/
+.pyre/
+
+# FastAPI/Backend
+*.db
+*.db-journal
+.alembic/
+alembic_version/
+
+# Database
+*.sqlite3
+*.sqlite3-journal
+
+# Environment variables
+.env*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

@@ -1,0 +1,186 @@
+.chapter-navigation-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.chapter-list h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.chapter-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapter-item {
+  margin-bottom: 0.5rem;
+}
+
+.chapter-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: #34495e;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.chapter-link:hover {
+  background-color: #e3f2fd;
+}
+
+.chapter-link.current {
+  background-color: #2196f3;
+  color: white;
+}
+
+.chapter-number {
+  margin-right: 0.75rem;
+  font-weight: bold;
+  min-width: 30px;
+}
+
+.chapter-title {
+  flex-grow: 1;
+}
+
+.chapter-progress {
+  margin-left: 0.75rem;
+  background-color: #bbdefb;
+  color: #1a237e;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.current-chapter .chapter-link {
+  background-color: #2196f3;
+  color: white;
+}
+
+.chapter-navigation-links {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.nav-button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #3498db;
+  color: #3498db;
+}
+
+.nav-button:hover:not(.disabled) {
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-button.prev-button {
+  text-align: left;
+}
+
+.nav-button.next-button {
+  text-align: right;
+}
+
+.nav-button.disabled {
+  color: #95a5a6;
+  border-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.chapter-learning-outcomes {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #3498db;
+}
+
+.chapter-learning-outcomes h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+}
+
+.chapter-learning-outcomes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.learning-outcome {
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.learning-outcome::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.chapter-navigation-loading,
+.chapter-navigation-error {
+  padding: 1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.chapter-navigation-loading {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.chapter-navigation-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .chapter-navigation-container {
+    padding: 1rem;
+  }
+
+  .chapter-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .chapter-number,
+  .chapter-title,
+  .chapter-progress {
+    margin: 0;
+  }
+}

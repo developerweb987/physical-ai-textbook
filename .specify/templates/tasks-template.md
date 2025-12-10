@@ -62,12 +62,12 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T004 Setup AI/Spec-driven development workflow using Spec-Kit Plus and Claude Code
+- [ ] T005 [P] Implement modular architecture for AI-agent-related logic separation
+- [ ] T006 [P] Setup RAG chatbot infrastructure for global and selected-text-only modes
+- [ ] T007 Create base content models that maintain academic rigor and technical accuracy
+- [ ] T008 Configure Docusaurus deployment pipeline for GitHub Pages
+- [ ] T009 Setup integration testing framework for textbook functionality
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -150,12 +150,12 @@ Examples of foundational tasks (adjust based on your project):
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] TXXX [P] Documentation updates in docs/
-- [ ] TXXX Code cleanup and refactoring
-- [ ] TXXX Performance optimization across all stories
+- [ ] TXXX [P] Documentation updates ensuring academic rigor and accessibility in docs/
+- [ ] TXXX Code cleanup and refactoring to maintain modular and reusable architecture
+- [ ] TXXX Performance optimization ensuring pages load within 3 seconds, RAG responses within 5 seconds
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
-- [ ] TXXX Run quickstart.md validation
+- [ ] TXXX Security hardening for BetterAuth integration (if implemented)
+- [ ] TXXX Run quickstart.md validation ensuring all constitution principles are met
 
 ---
 
