@@ -20,7 +20,7 @@ const config: Config = {
   url: 'https://developerweb987.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub Pages deployment, use '/<projectName>/' format
-  baseUrl: '/physical-ai-textbook/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
