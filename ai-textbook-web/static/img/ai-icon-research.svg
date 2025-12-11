@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <linearGradient id="researchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef6c00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e65100;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Microscope base -->
+  <rect x="10" y="18" width="4" height="3" fill="url(#researchGradient)" />
+  <!-- Microscope stand -->
+  <path d="M12 5 L14 18 L10 18 Z" fill="url(#researchGradient)" />
+  <!-- Microscope lens -->
+  <ellipse cx="12" cy="3" rx="6" ry="2" fill="url(#researchGradient)" />
+  <!-- Eyepiece -->
+  <ellipse cx="12" cy="0" rx="3" ry="1.5" fill="url(#researchGradient)" />
+  <!-- Light rays -->
+  <line x1="12" y1="0" x2="8" y2="-3" stroke="url(#researchGradient)" stroke-width="0.8" />
+  <line x1="12" y1="0" x2="16" y2="-3" stroke="url(#researchGradient)" stroke-width="0.8" />
+</svg>

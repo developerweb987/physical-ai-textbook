@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics Textbook',
   tagline: 'An AI-Native Textbook on Physical AI and Humanoid Robotics',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/ai-favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -75,7 +75,7 @@ const config: Config = {
       title: 'Physical AI Textbook',
       logo: {
         alt: 'Physical AI & Humanoid Robotics Textbook',
-        src: 'img/logo.svg',
+        src: 'img/ai-textbook-logo.svg',
       },
       items: [
         {
@@ -95,15 +95,44 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Textbook',
+          title: 'Textbook Modules',
           items: [
             {
-              label: 'Introduction',
+              label: 'Introduction to Physical AI',
               to: '/docs/introduction',
             },
             {
               label: 'Theory & Fundamentals',
               to: '/docs/theory-fundamentals',
+            },
+            {
+              label: 'Locomotion & Manipulation',
+              to: '/docs/locomotion-manipulation',
+            },
+            {
+              label: 'Perception & Control',
+              to: '/docs/perception-control',
+            },
+          ],
+        },
+        {
+          title: 'Advanced Topics',
+          items: [
+            {
+              label: 'Advanced Control Systems',
+              to: '/docs/applications-implementation/advanced-control-strategies',
+            },
+            {
+              label: 'Human-Robot Interaction',
+              to: '/docs/advanced-topics/human-robot-interaction',
+            },
+            {
+              label: 'Multi-Robot Systems',
+              to: '/docs/advanced-topics/multi-robot-systems',
+            },
+            {
+              label: 'Embodied Intelligence',
+              to: '/docs/advanced-topics/embodied-ai-cognition',
             },
           ],
         },
@@ -115,36 +144,26 @@ const config: Config = {
               href: 'https://github.com/developerweb987/physical-ai-textbook.git',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/physical-ai',
-            },
-            {
               label: 'Research Papers',
               href: 'https://scholar.google.com/scholar?q=physical+ai+humanoid+robotics',
             },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/developerweb987/physical-ai-textbook.git',
+              label: 'AI & Robotics Community',
+              href: 'https://discordapp.com/invite/physical-ai',
+            },
+            {
+              label: 'Contributing Guide',
+              to: '/docs/references',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI Textbook Project. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Empowering the next generation of roboticists and AI researchers.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['python', 'bash', 'yaml', 'docker', 'json'],
-    },
-    colorMode: {
-      defaultMode: 'light',
-      disableSwitch: false,
-      respectPrefersColorScheme: true,
     },
     metadata: [
       {name: 'keywords', content: 'robotics, physical AI, humanoid robots, AI, machine learning, control systems'},

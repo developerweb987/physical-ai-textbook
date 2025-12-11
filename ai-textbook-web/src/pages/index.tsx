@@ -1,10 +1,9 @@
-import type {ReactNode} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
@@ -13,23 +12,30 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/introduction/intro">
-            Get Started with Physical AI Textbook - 5min ⏱️
-          </Link>
+        <div className={styles.heroContent}>
+          <div className={styles.heroText}>
+            <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+            <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+            <div className={styles.buttons}>
+              <Link
+                className={clsx('button button--primary button--lg', styles.primaryButton)}
+                to="/docs/introduction/intro">
+                Start Learning
+              </Link>
+              <Link
+                className={clsx('button button--secondary button--outline button--lg', styles.secondaryButton)}
+                to="/docs/introduction">
+                Explore Modules
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </header>
   );
 }
 
-export default function Home(): ReactNode {
+export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout

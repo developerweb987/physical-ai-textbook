@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
@@ -6,57 +6,66 @@ import styles from './styles.module.css';
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+  Icon: React.ComponentType<React.ComponentProps<'svg'>>;
+  description: React.JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Comprehensive Physical AI Curriculum',
+    Svg: require('@site/static/img/undraw_robotics_curriculum.svg').default,
+    Icon: require('@site/static/img/ai-icon-curriculum.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Master the fundamentals of Physical AI and humanoid robotics through our structured curriculum covering theory, locomotion, perception, control systems, and advanced applications.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Practical Applications & Implementation',
+    Svg: require('@site/static/img/undraw_practical_implementation.svg').default,
+    Icon: require('@site/static/img/ai-icon-implementation.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Learn through hands-on examples and real-world case studies that bridge the gap between theoretical concepts and practical implementation in robotics and AI systems.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Cutting-Edge Research & Development',
+    Svg: require('@site/static/img/undraw_research_development.svg').default,
+    Icon: require('@site/static/img/ai-icon-research.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Explore the latest advancements in humanoid robotics, embodied intelligence, and multi-robot systems with insights from current research and industry applications.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, Icon, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+    <div className={clsx('col col--4', styles.featureCardWrapper)}>
+      <div className={styles.featureCard}>
+        <div className={clsx('text--center', styles.featureHeader)}>
+          <div className={styles.featureIconContainer}>
+            <Icon className={styles.featureIcon} />
+          </div>
+        </div>
+        <div className="text--center">
+          <Heading as="h3" className={styles.featureTitle}>
+            {title}
+          </Heading>
+          <p className={styles.featureDescription}>
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );
 }
 
-export default function HomepageFeatures(): ReactNode {
+export default function HomepageFeatures(): React.JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
