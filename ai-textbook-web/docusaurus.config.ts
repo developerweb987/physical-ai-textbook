@@ -14,15 +14,17 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  trailingSlash: true, // For better compatibility with both GitHub Pages and Vercel
+
   // Set the production url of your site here
-  url: 'https://your-organization.github.io',
+  url: 'https://developerweb987.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // For GitHub Pages deployment, use '/<projectName>/' format
   baseUrl: '/physical-ai-textbook/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-organization', // Usually your GitHub org/user name.
+  organizationName: 'developerweb987', // Usually your GitHub org/user name.
   projectName: 'physical-ai-textbook', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -44,27 +46,22 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/developerweb987/physical-ai-textbook/tree/main/ai-textbook-web/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
+    ],
+    [
+      '@docusaurus/plugin-sitemap',
+      {
+        changefreq: 'weekly',
+        priority: 0.5,
+        ignorePatterns: ['/tags/**'],
+        filename: 'sitemap.xml',
+      },
     ],
   ],
 
@@ -87,7 +84,6 @@ const config: Config = {
           position: 'left',
           label: 'Textbook',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/developerweb987/physical-ai-textbook.git',
           label: 'GitHub',
@@ -102,12 +98,12 @@ const config: Config = {
           title: 'Textbook',
           items: [
             {
-              label: 'Physical AI Fundamentals',
-              to: '/docs/physical-ai-fundamentals',
+              label: 'Introduction',
+              to: '/docs/introduction',
             },
             {
-              label: 'Robotics Foundations',
-              to: '/docs/robotics-fundamentals-kinematics',
+              label: 'Theory & Fundamentals',
+              to: '/docs/theory-fundamentals',
             },
           ],
         },
@@ -132,10 +128,6 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/developerweb987/physical-ai-textbook.git',
             },
@@ -147,7 +139,21 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['python', 'bash', 'yaml', 'docker', 'json'],
     },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    metadata: [
+      {name: 'keywords', content: 'robotics, physical AI, humanoid robots, AI, machine learning, control systems'},
+      {name: 'description', content: 'Comprehensive textbook on Physical AI and Humanoid Robotics'},
+      {property: 'og:title', content: 'Physical AI & Humanoid Robotics Textbook'},
+      {property: 'og:description', content: 'Master Physical AI, robotics, and humanoid systems with this comprehensive textbook'},
+      {property: 'og:type', content: 'website'},
+      {property: 'og:url', content: 'https://developerweb987.github.io/physical-ai-textbook/'},
+    ],
   } satisfies Preset.ThemeConfig,
 };
 

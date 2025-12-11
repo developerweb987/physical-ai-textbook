@@ -15,115 +15,88 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   textbookSidebar: [
-    'intro',
     {
       type: 'category',
-      label: 'Physical AI Fundamentals',
+      label: 'Module 01: Introduction',
+      collapsible: true,
+      collapsed: false,
       items: [
-        'physical-ai-fundamentals',
+        'introduction/index',
+        'introduction/intro',
       ],
     },
     {
       type: 'category',
-      label: 'Robotics Foundations',
+      label: 'Module 02: Theory & Fundamentals',
+      collapsible: true,
+      collapsed: true,
       items: [
-        'robotics-fundamentals-kinematics',
-        'sensor-systems-perception',
-        'control-theory-physical-ai',
+        'theory-fundamentals/index',
+        'theory-fundamentals/physical-ai-fundamentals',
+        'theory-fundamentals/robotics-fundamentals-kinematics',
       ],
     },
     {
       type: 'category',
-      label: 'Locomotion and Manipulation',
+      label: 'Module 03: Locomotion & Manipulation',
+      collapsible: true,
+      collapsed: true,
       items: [
-        'locomotion-mobility',
-        'manipulation-grasping',
+        'locomotion-manipulation/index',
+        'locomotion-manipulation/locomotion-mobility',
+        'locomotion-manipulation/manipulation-grasping',
       ],
     },
     {
       type: 'category',
-      label: 'Human-Robot Interaction',
+      label: 'Module 04: Perception & Control',
+      collapsible: true,
+      collapsed: true,
       items: [
-        'human-robot-interaction',
+        'perception-control/index',
+        'perception-control/sensor-systems-perception',
+        'perception-control/control-theory-physical-ai',
       ],
     },
     {
       type: 'category',
-      label: 'Learning and Adaptation',
+      label: 'Module 05: Advanced Topics',
+      collapsible: true,
+      collapsed: true,
       items: [
-        'learning-physical-systems',
+        'advanced-topics/index',
+        'advanced-topics/human-robot-interaction',
+        'advanced-topics/learning-physical-systems',
+        'advanced-topics/safety-ethics-physical-ai',
+        'advanced-topics/multi-robot-systems',
+        'advanced-topics/embodied-ai-cognition',
       ],
     },
     {
       type: 'category',
-      label: 'Safety and Ethics',
+      label: 'Module 06: Applications & Implementation',
+      collapsible: true,
+      collapsed: true,
       items: [
-        'safety-ethics-physical-ai',
+        'applications-implementation/index',
+        'applications-implementation/hardware-design-humanoid-robots',
+        'applications-implementation/simulation-real-world-transfer',
+        'applications-implementation/energy-management-efficiency',
+        'applications-implementation/advanced-control-strategies',
+        'applications-implementation/applications-case-studies',
+        'applications-implementation/future-directions-physical-ai',
       ],
     },
     {
       type: 'category',
-      label: 'Multi-Robot Systems',
+      label: 'References & Resources',
+      collapsible: true,
+      collapsed: true,
       items: [
-        'multi-robot-systems',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Embodied Intelligence',
-      items: [
-        'embodied-ai-cognition',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Hardware Design',
-      items: [
-        'hardware-design-humanoid-robots',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Simulation and Transfer',
-      items: [
-        'simulation-real-world-transfer',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Energy and Efficiency',
-      items: [
-        'energy-management-efficiency',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Advanced Control',
-      items: [
-        'advanced-control-strategies',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Applications and Case Studies',
-      items: [
-        'applications-case-studies',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Future Directions',
-      items: [
-        'future-directions-physical-ai',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'System Development',
-      items: [
-        'troubleshooting-debugging',
-        'performance-optimization',
-        'integration-system-design',
+        'references/index',
+        'references/troubleshooting-debugging',
+        'references/performance-optimization',
+        'references/integration-system-design',
       ],
     },
   ],
