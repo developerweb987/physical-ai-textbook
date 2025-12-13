@@ -82,7 +82,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'textbookSidebar',
           position: 'left',
-          label: 'Textbook',
+          label: 'Book Docs',
         },
         {
           href: 'https://github.com/developerweb987/physical-ai-textbook.git',

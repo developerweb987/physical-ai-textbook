@@ -164,21 +164,10 @@ main > *:first-child {
               200px 200px rgba(255, 255, 255, 0.3),
               240px 240px rgba(255, 255, 255, 0.3),
               280px 280px rgba(255, 255, 255, 0.3),
-              320px 320px rgba(255, 255, 255, 0.3),
-              360px 360px rgba(255, 255, 255, 0.3),
-              400px 400px rgba(255, 255, 255, 0.3),
-              440px 440px rgba(255, 255, 255, 0.3),
-              480px 480px rgba(255, 255, 255, 0.3),
-              520px 520px rgba(255, 255, 255, 0.3),
-              560px 560px rgba(255, 255, 255, 0.3),
-              600px 600px rgba(255, 255, 255, 0.3),
-              640px 640px rgba(255, 255, 255, 0.3),
-              680px 680px rgba(255, 255, 255, 0.3),
-              720px 720px rgba(255, 255, 255, 0.3),
-              760px 760px rgba(255, 255, 255, 0.3),
-              800px 800px rgba(255, 255, 255, 0.3);
+              320px 320px rgba(255, 255, 255, 0.3);
   animation: drift 25s linear infinite;
   z-index: 0;
+  overflow: hidden;
 }
 
 @keyframes drift {
